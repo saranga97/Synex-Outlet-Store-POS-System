@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Grocery Store Dashboard</title>
+        <link rel="stylesheet" type="text/css" href="styles.css">
+    </head>
+    <body>
+        <div class="top-bar">
+            <h1>Synex Grocery Store</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Dashboard</a></li>
+                <li><a href="purchase.html">Process Purchase</a></li>
+                <li><a href="reorder.html">Reorder Levels</a></li>
+                <li><a href="stock.html">Current Stock</a></li>
+                <li><a href="transactions.html">Transactions</a></li>
+            </ul>
+        </nav>
+        <div id="content">
+            <h2>Welcome to the Grocery Store Dashboard</h2>
+            <p>Use the navigation menu to manage items and transactions.</p>
+            <div id="totalSaleContainer">
+                <h3>Total Sale for Today</h3>
+                <p id="totalSale">Loading...</p>
+            </div>
+            <div id="todayTransactionContainer">
+                <h3>Today's Transactions</h3>
+                <table id="todayTransactionTable">
+                    <thead>
+                        <tr>
+                            <th>Transaction ID</th>
+                            <th>Transaction Date</th>
+                            <th>Total Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Transaction items will be populated here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <script>
+            function fetchTotalSale() {
+                const today = new Date().toISOString().split('T')[0];
+                fetch(`/api/purchases/totalSale?date=${today}`)
+                        .then(response => response.json())
+                        .then(data => {
+                            document.getElementById('totalSale').innerText = `Total Sale: $${data.toFixed(2)}`;
+                        })
+                        .catch(error => {
+                            console.error('Error fetching total sale:', error);
+                            document.getElementById('totalSale').innerText = 'Error fetching total sale.';
+                        });
+            }
+
+            function fetchTodayTransactions() {
+                fetch('/api/purchases/todayTransactions')
+                        .then(response => response.json())
+                        .then(data => {
+                            const tableBody = document.querySelector('#todayTransactionTable tbody');
+                            if (!tableBody) {
+                                console.error('Table body not found.');
+                                return;
+                            }
+                            tableBody.innerHTML = '';
+                            let totalSale = 0;
+                            data.forEach(transaction => {
+                                totalSale += transaction.totalPrice;
+                                const row = document.createElement('tr');
+                                row.innerHTML = `
+                                <td>${transaction.id}</td>
+                                <td>${new Date(transaction.date).toLocaleDateString()}</td>
+                                <td>${transaction.totalPrice.toFixed(2)}</td>
+                            `;
+                                tableBody.appendChild(row);
+                            });
+                            document.getElementById('totalSale').innerText = `Total Sale: $${totalSale.toFixed(2)}`;
+                        })
+                        .catch(error => {
+                            console.error('Error fetching today transactions:', error);
+                        });
+            }
+
+            fetchTotalSale();
+            fetchTodayTransactions();
+        </script>
+    </body>
+</html>

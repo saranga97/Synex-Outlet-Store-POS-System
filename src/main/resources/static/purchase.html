@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Process Purchase</title>
+  <link rel="stylesheet" type="text/css" href="stylespurchase.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+
+<header style="display: flex; align-items: center;">
+  <button id="backToDashboard">Back</button>
+  <h1 style="margin: 0 auto;">Process Purchase items </h1>
+</header>
+
+
+<main class="container">
+  <div class="left-side" style="box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+    <form id="purchaseForm">
+      <div>
+        <label for="itemCode">Item Code:</label>
+        <input type="text" id="itemCode" name="itemCode">
+      </div>
+      <div>
+        <label for="quantity">Quantity:</label>
+        <input type="number" id="quantity" name="quantity">
+      </div>
+      <div>
+        <button class="btn" type="button" id="addItem">Add Item</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="right-side" style="box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+    
+      <h2>Shopping Cart</h2>
+      <ul id="cartItems"></ul>
+      <div>
+        <label for="cashTendered">Cash Tendered:</label>
+        <input type="number" id="cashTendered" name="cashTendered">
+      </div>
+      <div>
+        <label for="discount">Discount:</label>
+        <input type="number" id="discount" name="discount">
+      </div>
+      <button class="btn" type="button" id="processPurchase">Process Purchase</button>
+    </div>
+  
+</main>
+
+<div id="receipt">
+  <h2>Receipt</h2>
+  <p id="receiptDetails"></p>
+</div>
+
+<button id="downloadPdf">Download Receipt as PDF</button>
+
+<script src="scripts.js"></script>
+</body>
+</html>

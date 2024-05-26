@@ -1,0 +1,128 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f8ff; /* Light blue background */
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  background-color: transparent;/* Distribute space between left and right sides */
+}
+
+.left-side,
+.right-side {
+  width: 48%; /* Adjusted width for both sides */
+  padding: 20px;
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+
+.left-side {
+  background-color: #fff; /* White background for left side */
+  
+}
+
+.right-side {
+  background-color: #fff; /* White background for right side */
+}
+
+header {
+  background-color: #006400; /* Dark green header */
+  color: #fff; /* White text color */
+  padding: 10px;
+  display: flex;
+/*  justify-content: space-between;  Align items evenly */
+  align-items: center;
+}
+
+header button {
+  background-color: transparent;
+  border: none;
+  color: #fff; /* White text color */
+  cursor: pointer;
+  font-size: 14px; /* Smaller font size */
+}
+
+h1 {
+  margin: 0;
+  font-size: 24px; /* Larger font size for page title */
+  align-content: center;
+}
+
+main {
+  padding: 20px;
+  display: flex;
+  gap: 20px; /* Add gap between left and right sides */
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+input[type="text"],
+input[type="number"] {
+  width: calc(100% - 20px); /* Adjust input width to consider padding */
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.btn {
+/*  width: calc(100% - 20px);  Adjust button width to consider padding */
+  padding: 10px;
+  background-color: #4CAF50; /* Green button */
+  border: none;
+  color: #fff; /* White text color */
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049; /* Darker green button on hover */
+}
+
+#cart {
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Box shadow for a card-like effect */
+}
+
+#cartItems {
+  list-style-type: none;
+  padding: 0;
+}
+
+#receipt {
+  background-color: #f9f9f9; /* Light gray background for receipt */
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Box shadow for a card-like effect */
+  width: 96%; /* Width of receipt div */
+  margin: 20px auto; /* Center receipt div horizontally */
+  align-content: center;
+  width:50%;
+  
+}
+
+#downloadPdf {
+  background-color: #008CBA; /* Blue download button */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+  display: block;
+  width: 20%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#downloadPdf:hover {
+  background-color: #005f6b; /* Darker blue button on hover */
+}
